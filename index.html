@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My HTML Introduction Page</title>
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    
+    :root{
+      --accent:#2a9d8f;
+      --muted:#6b7280;
+      --bg-fallback:#f7f7f9;
+      --content-max:1000px;
+    }
+    html,body{height:100%;margin:0;font-family:Roboto, Arial, sans-serif;background-color:var(--bg-fallback);}
+
+    
+    body{
+      background-image: url('background-texture.jpg');
+      background-repeat: repeat;
+      background-size: auto;
+      color:#222;
+    }
+
+    header{display:flex;align-items:center;gap:16px;padding:18px 24px;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);}
+    header img.logo{width:90px;height:auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.12)}
+    header h1{font-family:Montserrat, sans-serif;margin:0;color:var(--accent);font-size:1.6rem}
+
+    nav{margin-left:auto}
+    nav a{margin-left:12px;text-decoration:none;color:var(--muted);font-weight:600}
+    nav a:hover{color:var(--accent);text-decoration:underline}
+
+    main{max-width:var(--content-max);margin:28px auto;padding:20px;background:rgba(255,255,255,0.92);border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+
+    .intro{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+    .intro .text{flex:1 1 320px}
+    .intro p.lead{font-size:1.05rem;color:#333}
+
+    .bio{background:#fcfcff;padding:14px;border-radius:8px;border-left:4px solid var(--accent)}
+
+    
+    .portrait{width:220px;border-radius:8px;overflow:hidden;border:2px solid #eee}
+    .portrait img{display:block;width:100%;height:auto;transition:transform .25s ease,filter .25s ease}
+    .portrait img:hover{transform:scale(1.03);filter:brightness(.95)}
+
+    
+    #cursor-dot{position:fixed;pointer-events:none;width:12px;height:12px;border-radius:50%;transform:translate(-50%,-50%);z-index:9999;background:var(--accent);opacity:0.85;transition:width .12s,height .12s,opacity .12s}
+
+    footer{margin-top:18px;padding:18px 24px;text-align:center;color:var(--muted);font-size:0.95rem}
+    footer .links a{margin:0 8px;color:var(--muted);text-decoration:none}
+    footer .links a:hover{color:var(--accent)}
+
+    
+    @media (max-width:720px){header{flex-direction:column;align-items:flex-start} .intro{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <header>
+    
+    <img src="F:\mylogo.jpg" alt="My logo" width="227" height="272">
+    <h1>My Webpage Title</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#bio">Bio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro" id="about">
+      <div class="text">
+        <h2 style="color:#1b3b3a;font-family:Montserrat, sans-serif;">Introduction</h2>
+        <p class="lead">Hello! Welcome to my introduction page. This page demonstrates basic HTML elements, use of color and fonts, an included logo and personal picture, and a few simple interactive effects. Feel free to replace the images and text with your own content.</p>
+
+        <h3 style="color:var(--accent);">Short Bio</h3>
+        <div class="bio" id="bio">
+          <p style="margin:0;color:#2b2b2b">Hi — I'm Juan Gonzalez, a student learning HTML and web design. I enjoy creating simple, accessible web pages, experimenting with fonts and colors, and adding small interactive touches to improve the user experience. I made this page for an HTML assignment and included my own logo and photo.</p>
+        </div>
+      </div>
+
+      <figure class="portrait">
+        <!-- Replace me.jpg with your own picture or graphic -->
+        <img src="F:\me.jpg" alt="A picture of me" >
+      </figure>
+    </section>
+
+    <section style="margin-top:22px">
+      <h3 style="color:#1b3b3a">More stuff (effects & examples)</h3>
+      <p>Font color and style examples: <span style="color:var(--accent);font-weight:700">Accent color text</span> — <span style="color:#d62828; font-style:italic">Red italic text</span>.</p>
+
+      <p>Example of a rollover image swap: <img src="graphic-small.jpg" alt="small graphic example" style="vertical-align:middle;width:80px;height:auto;" onmouseover="this.src='graphic-small-hover.jpg'" onmouseout="this.src='graphic-small.jpg'"></p>
+
+      <p>Copyright notice (as requested): &copy; All Rights Reserved 2012</p>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="links">
+      <a href="https://example.com" target="_blank" rel="noopener">External Link</a> |
+      <a href="mailto:youremail@example.com">Email Me</a> |
+      <a href="#">Back to top</a>
+    </div>
+    <div style="margin-top:8px;color:var(--muted)">&copy; All Rights Reserved 2012</div>
+  </footer>
+
+  <script>
+    
+    const dot = document.getElementById('cursor-dot');
+    document.addEventListener('mousemove', e => {
+      dot.style.left = e.clientX + 'px';
+      dot.style.top = e.clientY + 'px';
+    });
+    
+    const hoverables = document.querySelectorAll('a, button, img');
+    hoverables.forEach(el => {
+      el.addEventListener('mouseenter', () => { dot.style.width='26px'; dot.style.height='26px'; dot.style.opacity='0.6'; });
+      el.addEventListener('mouseleave', () => { dot.style.width='12px'; dot.style.height='12px'; dot.style.opacity='0.85'; });
+    });
+
+    
+    document.querySelectorAll('img').forEach(img=>{ if(!img.alt || img.alt.trim()==='') console.warn('Image missing alt text:', img); });
+  </script>
+</body>
+</html>
