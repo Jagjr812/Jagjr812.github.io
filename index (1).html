@@ -1,21 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My HTML Introduction Page</title>
+
+  <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Roboto&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <nav class="menu">
+
+<!-- Cursor Dot -->
+<div id="cursor-dot"></div>
+
+<!-- HEADER + NAVIGATION -->
+<header>
+  <img src="F:/mylogo.jpg" alt="My Logo" class="logo">
+
+  <h1>My Webpage Title</h1>
+
+  <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+
+  <nav class="main-nav">
     <ul>
+      <li><a href="#about">About</a></li>
+
       <li class="dropdown">
-        <a href="#">Menu</a>
-        <ul class="dropdown-content">
-          <li><a href="#">Item 1</a></li>
-          <li><a href="#">Item 2</a></li>
+        <a href="#">Projects ▼</a>
+
+        <ul class="dropdown-menu">
+          <li><a href="#bio">Bio Section</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact Form</a></li>
         </ul>
       </li>
+
+      <li><a href="#effects">Effects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://example.com" target="_blank">External</a></li>
     </ul>
   </nav>
-  <div class="cursor-dot"></div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+  <section class="intro" id="about">
+    <div class="text">
+      <h2>Introduction</h2>
+      <p class="lead">
+        Welcome! This page demonstrates responsive design, dropdown navigation,
+        hover effects, animations, and a custom cursor.
+      </p>
+
+      <h3 id="bio">Short Bio</h3>
+      <div class="bio-box">
+        <p>
+          Hi — I'm Juan Gonzalez, a student learning HTML and web design.
+          I enjoy experimenting with designs and coding interactive elements.
+        </p>
+      </div>
+    </div>
+
+    <figure class="portrait">
+      <img src="F:/me.jpg" alt="A picture of me">
+    </figure>
+  </section>
+
+  <section id="effects">
+    <h3>Effects & Features</h3>
+
+    <p>Accent text example: <span class="accent-text">Accent Color!</span></p>
+
+    <p>Image Hover Swap:
+      <img src="graphic-small.jpg"
+           alt="graphic"
+           onmouseover="this.src='graphic-small-hover.jpg'"
+           onmouseout="this.src='graphic-small.jpg'"
+           class="swap-img">
+    </p>
+
+    <p>&copy; All Rights Reserved 2012</p>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="links">
+    <a href="https://example.com">External</a>
+    <a href="mailto:youremail@example.com">Email Me</a>
+    <a href="#">Top</a>
+  </div>
+  <p>&copy; All Rights Reserved 2012</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  /* MOBILE MENU */
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".main-nav");
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+
+  /* CURSOR DOT */
+  const dot = document.getElementById('cursor-dot');
+
+  document.addEventListener('mousemove', (e) => {
+    dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  });
+
+  document.querySelectorAll("a, button, img").forEach(el => {
+    el.addEventListener("mouseenter", () => {
+      dot.classList.add("cursor-hover");
+    });
+    el.addEventListener("mouseleave", () => {
+      dot.classList.remove("cursor-hover");
+    });
+  });
+</script>
+
 </body>
 </html>
