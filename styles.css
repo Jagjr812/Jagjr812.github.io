@@ -1,0 +1,26 @@
+body {
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: red;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.dropdown-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+}
