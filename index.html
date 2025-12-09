@@ -11,19 +11,17 @@
 <header>
   <div class="logo">Kennedy Fried Chicken</div>
 
-  <!-- Navigation Menu -->
   <nav class="navbar">
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
 
-      <!-- Dropdown Menu -->
       <li class="dropdown">
         <a href="menu.html">Menu ▾</a>
         <ul class="dropdown-content">
-          <li><a href="#">Chicken</a></li>
-          <li><a href="#">Sides</a></li>
-          <li><a href="#">Drinks</a></li>
-          <li><a href="#">Family Meals</a></li>
+          <li><a href="menu.html#chicken">Chicken</a></li>
+          <li><a href="menu.html#sides">Sides</a></li>
+          <li><a href="menu.html#drinks">Drinks</a></li>
+          <li><a href="menu.html#family">Family Meals</a></li>
         </ul>
       </li>
 
@@ -33,7 +31,6 @@
       <li><a href="order.html">Order Online</a></li>
     </ul>
 
-    <!-- Mobile Toggle Button -->
     <div class="hamburger">
       <span></span><span></span><span></span>
     </div>
@@ -46,16 +43,13 @@
 </main>
 
 <script>
-  // Mobile menu toggle
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav-menu");
 
   hamburger.addEventListener("click", () => {
     navMenu.classList.toggle("active");
-    hamburger.classList.toggle("active");
   });
 </script>
 
 </body>
 </html>
-
