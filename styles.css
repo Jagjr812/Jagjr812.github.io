@@ -131,24 +131,10 @@ header {
     display: flex;
   }
   
-  /* GENERAL NAV STYLES */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  /* MOBILE NAV FIX */
+@media (max-width: 600px) {
 
-/* Default desktop menu */
-.nav-menu {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-
-/* MOBILE STYLES */
-@media (max-width: 768px) {
-
-  /* Hide menu on mobile until hamburger is clicked */
+  /* Hide the menu until hamburger is clicked */
   .nav-menu {
     display: none;
     position: absolute;
@@ -159,19 +145,20 @@ header {
     width: 200px;
     padding: 15px;
     border: 1px solid #ddd;
+    z-index: 1000;
   }
 
-  /* Show menu when active class is added */
+  /* Show menu when active */
   .nav-menu.active {
     display: flex;
   }
 
-  /* Hamburger icon visible on mobile */
+  /* Show hamburger on mobile */
   .hamburger {
     display: flex;
     flex-direction: column;
-    cursor: pointer;
     gap: 5px;
+    cursor: pointer;
   }
 
   .hamburger span {
@@ -179,9 +166,10 @@ header {
     height: 3px;
     background: #000;
   }
+
 }
 
-/* Desktop: hide hamburger */
+/* Hide hamburger on desktop */
 .hamburger {
   display: none;
 }
