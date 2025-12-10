@@ -1,23 +1,24 @@
-This was the code Make this code show the nav bar in the mobile view port: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kennedy Fried Chicken</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <header>
   <div class="logo">Kennedy Fried Chicken</div>
 
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main navigation">
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
 
       <li class="dropdown">
-        <a href="menu.html">Menu ▾</a>
-        <ul class="dropdown-content">
+        <!-- use an entity for the triangle to avoid any encoding issues -->
+        <a href="menu.html">Menu &#9662;</a>
+        <ul class="dropdown-content" aria-label="Menu sections">
           <li><a href="menu.html#chicken">Chicken</a></li>
           <li><a href="menu.html#sides">Sides</a></li>
           <li><a href="menu.html#drinks">Drinks</a></li>
@@ -31,9 +32,9 @@ This was the code Make this code show the nav bar in the mobile view port: <!DOC
       <li><a href="order.html">Order Online</a></li>
     </ul>
 
-    <div class="hamburger">
+    <button class="hamburger" aria-expanded="false" aria-label="Toggle menu">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </nav>
 </header>
 
@@ -42,13 +43,24 @@ This was the code Make this code show the nav bar in the mobile view port: <!DOC
   <p>Your neighborhood favorite since 1995.</p>
 </main>
 
+<!-- Defensive JS: check the element exists before adding listener -->
 <script>
-  const hamburger = document.querySelector(".hamburger");
-  const navMenu = document.querySelector(".nav-menu");
+  (function () {
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
 
-  hamburger.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-  });
+    if (!hamburger || !navMenu) {
+      // elements missing — fail gracefully
+      console.warn("Hamburger or nav-menu not found in DOM.");
+      return;
+    }
+
+    hamburger.addEventListener("click", () => {
+      const isActive = navMenu.classList.toggle("active");
+      // keep aria-expanded in sync for accessibility
+      hamburger.setAttribute("aria-expanded", isActive ? "true" : "false");
+    });
+  })();
 </script>
 
 </body>
