@@ -11,6 +11,14 @@
 }
 
 /* ------------------------------
+   GLOBAL FIX FOR MOBILE
+--------------------------------*/
+header,
+.navbar {
+  position: relative;
+}
+
+/* ------------------------------
    GLOBAL STYLES
 --------------------------------*/
 body {
@@ -35,7 +43,7 @@ header {
 }
 
 /* ------------------------------
-   NAVIGATION MENU DESKTOP
+   NAVIGATION MENU — DESKTOP
 --------------------------------*/
 .navbar {
   position: relative;
@@ -57,7 +65,6 @@ header {
   transition: background var(--transition-speed), color var(--transition-speed);
 }
 
-/* Hover rollover */
 .nav-menu li a:hover {
   background: var(--kf-gold);
   color: var(--kf-dark);
@@ -65,7 +72,7 @@ header {
 }
 
 /* ------------------------------
-   DROPDOWN MENU
+   DROPDOWN — DESKTOP
 --------------------------------*/
 .dropdown {
   position: relative;
@@ -94,57 +101,65 @@ header {
   background: var(--hover-bg);
 }
 
-/* Show dropdown on hover (desktop only) */
+/* Show dropdown on hover (desktop) */
 .dropdown:hover .dropdown-content {
   display: flex;
 }
 
 /* ------------------------------
-   MOBILE MENU (FIXED + WORKING)
+   MOBILE MENU — FULLY WORKING
+   BREAKPOINT: 900px (iPhone 13+ safe)
 --------------------------------*/
-@media (max-width: 720px) {
+@media (max-width: 900px) {
 
-  /* Hide menu on mobile until hamburger is clicked */
+  /* Turn horizontal menu into mobile drawer */
   .nav-menu {
     position: absolute;
-    top: 65px;
+    top: 60px;
     right: 0;
     background: var(--kf-red);
     flex-direction: column;
-    width: 200px;
-    display: none;        /* hidden by default */
+    width: 220px;
+    display: none; /* hidden until hamburger click */
     padding: 10px 0;
-    z-index: 999;
+    z-index: 9999;
   }
 
-  /* Show when active */
+  /* Show menu when toggled in JS */
   .nav-menu.active {
     display: flex;
   }
 
-  /* Dropdown changes on mobile */
+  /* Mobile dropdown style */
   .dropdown-content {
     position: static;
     box-shadow: none;
     background: var(--kf-light);
   }
 
-  /* Show hamburger menu */
+  /* Hamburger visible on mobile */
   .hamburger {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     cursor: pointer;
   }
 
   .hamburger span {
-    width: 25px;
+    width: 28px;
     height: 3px;
     background: var(--kf-light);
   }
+
+  /* Hide desktop nav layout */
+  .nav-menu {
+    gap: 0;
+  }
 }
 
-/* Hide hamburger on desktop */
+/* ------------------------------
+   HAMBURGER — DESKTOP
+--------------------------------*/
 .hamburger {
-  display: none;
+  display: none; /* hidden on desktop */
 }
