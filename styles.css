@@ -1,21 +1,40 @@
-/* RESET BODY (to confirm CSS loads) */
+/* ------------------------------
+   COLOR THEME
+--------------------------------*/
+:root {
+  --kf-red: #d62828;
+  --kf-gold: #fcbf49;
+  --kf-dark: #2b2b2b;
+  --kf-light: #ffffff;
+  --hover-bg: rgba(0,0,0,0.08);
+  --transition-speed: 0.25s;
+}
+
+/* ------------------------------
+   GLOBAL
+--------------------------------*/
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #fafafa;
+  color: var(--kf-dark);
+
+  /* Prevent content from being hidden under header */
+  padding-top: 80px;
 }
 
-/* ------------------------------
-   HEADER
---------------------------------*/
 header {
-  background: #d62828;
-  color: white;
+  background: var(--kf-red);
   padding: 14px 22px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: relative;
+  justify-content: space-between;
+  color: var(--kf-light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .logo {
@@ -24,8 +43,12 @@ header {
 }
 
 /* ------------------------------
-   DESKTOP NAV
+   NAVIGATION DESKTOP
 --------------------------------*/
+.navbar {
+  position: relative;
+}
+
 .nav-menu {
   list-style: none;
   display: flex;
@@ -35,15 +58,17 @@ header {
 }
 
 .nav-menu li a {
-  color: white;
   text-decoration: none;
+  color: var(--kf-light);
   padding: 10px 8px;
   display: block;
+  transition: background var(--transition-speed), color var(--transition-speed);
 }
 
+/* Hover */
 .nav-menu li a:hover {
-  background: #fcbf49;
-  color: #2b2b2b;
+  background: var(--kf-gold);
+  color: var(--kf-dark);
   border-radius: 4px;
 }
 
@@ -55,70 +80,80 @@ header {
 }
 
 .dropdown-content {
-  display: none;
+  background: var(--kf-light);
   position: absolute;
-  top: 40px;
+  top: 42px;
   left: 0;
-  background: white;
-  color: black;
+  min-width: 150px;
+  display: none;
+  flex-direction: column;
   list-style: none;
   padding: 0;
-  min-width: 150px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.dropdown-content li a {
+  color: var(--kf-dark);
+  padding: 10px;
+}
+
+.dropdown-content li a:hover {
+  background: var(--hover-bg);
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: flex;
 }
 
 /* ------------------------------
-   HAMBURGER ICON (HIDDEN ON DESKTOP)
+   HAMBURGER DEFAULT (HIDDEN)
 --------------------------------*/
 .hamburger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: white;
 }
 
 /* ------------------------------
-   MOBILE RULES
+   MOBILE VIEW
 --------------------------------*/
-@media (max-width: 900px) {
+@media (max-width: 720px) {
 
-  /* Show hamburger */
+  /* show hamburger */
   .hamburger {
     display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
   }
 
-  /* Hide desktop nav */
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--kf-light);
+  }
+
+  /* hide the horizontal menu */
   .nav-menu {
+    display: none;
+    flex-direction: column;
     position: absolute;
     top: 60px;
     right: 0;
-    background: #d62828;
-    width: 200px;
+    background: var(--kf-red);
+    width: 220px;
     padding: 10px 0;
-    flex-direction: column;
-    display: none; /* initially hidden */
+    border-radius: 0 0 0 8px;
   }
 
-  /* When hamburger clicked */
+  /* Show menu when active */
   .nav-menu.active {
     display: flex;
   }
 
-  /* Make dropdown work on mobile */
+  /* Dropdown inside mobile menu */
   .dropdown-content {
     position: static;
     box-shadow: none;
-    background: white;
+    background: var(--kf-light);
   }
-
 }
