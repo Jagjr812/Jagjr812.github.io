@@ -1,40 +1,21 @@
-/* ------------------------------
-   COLOR THEME
---------------------------------*/
-:root {
-  --kf-red: #d62828;
-  --kf-gold: #fcbf49;
-  --kf-dark: #2b2b2b;
-  --kf-light: #ffffff;
-  --hover-bg: rgba(0,0,0,0.08);
-  --transition-speed: 0.25s;
-}
-
-/* ------------------------------
-   GLOBAL FIX FOR MOBILE
---------------------------------*/
-header,
-.navbar {
-  position: relative;
-}
-
-/* ------------------------------
-   GLOBAL STYLES
---------------------------------*/
+/* RESET BODY (to confirm CSS loads) */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #fafafa;
-  color: var(--kf-dark);
 }
 
+/* ------------------------------
+   HEADER
+--------------------------------*/
 header {
-  background: var(--kf-red);
+  background: #d62828;
+  color: white;
   padding: 14px 22px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  color: var(--kf-light);
+  align-items: center;
+  position: relative;
 }
 
 .logo {
@@ -43,12 +24,8 @@ header {
 }
 
 /* ------------------------------
-   NAVIGATION MENU — DESKTOP
+   DESKTOP NAV
 --------------------------------*/
-.navbar {
-  position: relative;
-}
-
 .nav-menu {
   list-style: none;
   display: flex;
@@ -58,108 +35,90 @@ header {
 }
 
 .nav-menu li a {
+  color: white;
   text-decoration: none;
-  color: var(--kf-light);
   padding: 10px 8px;
   display: block;
-  transition: background var(--transition-speed), color var(--transition-speed);
 }
 
 .nav-menu li a:hover {
-  background: var(--kf-gold);
-  color: var(--kf-dark);
+  background: #fcbf49;
+  color: #2b2b2b;
   border-radius: 4px;
 }
 
 /* ------------------------------
-   DROPDOWN — DESKTOP
+   DROPDOWN
 --------------------------------*/
 .dropdown {
   position: relative;
 }
 
 .dropdown-content {
-  background: var(--kf-light);
-  position: absolute;
-  top: 42px;
-  left: 0;
-  min-width: 150px;
   display: none;
-  flex-direction: column;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: white;
+  color: black;
   list-style: none;
   padding: 0;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  min-width: 150px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.dropdown-content li a {
-  color: var(--kf-dark);
-  padding: 10px;
-}
-
-.dropdown-content li a:hover {
-  background: var(--hover-bg);
-}
-
-/* Show dropdown on hover (desktop) */
 .dropdown:hover .dropdown-content {
-  display: flex;
+  display: block;
 }
 
 /* ------------------------------
-   MOBILE MENU — FULLY WORKING
-   BREAKPOINT: 900px (iPhone 13+ safe)
+   HAMBURGER ICON (HIDDEN ON DESKTOP)
+--------------------------------*/
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+}
+
+/* ------------------------------
+   MOBILE RULES
 --------------------------------*/
 @media (max-width: 900px) {
 
-  /* Turn horizontal menu into mobile drawer */
+  /* Show hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide desktop nav */
   .nav-menu {
     position: absolute;
     top: 60px;
     right: 0;
-    background: var(--kf-red);
-    flex-direction: column;
-    width: 220px;
-    display: none; /* hidden until hamburger click */
+    background: #d62828;
+    width: 200px;
     padding: 10px 0;
-    z-index: 9999;
+    flex-direction: column;
+    display: none; /* initially hidden */
   }
 
-  /* Show menu when toggled in JS */
+  /* When hamburger clicked */
   .nav-menu.active {
     display: flex;
   }
 
-  /* Mobile dropdown style */
+  /* Make dropdown work on mobile */
   .dropdown-content {
     position: static;
     box-shadow: none;
-    background: var(--kf-light);
+    background: white;
   }
 
-  /* Hamburger visible on mobile */
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-  }
-
-  .hamburger span {
-    width: 28px;
-    height: 3px;
-    background: var(--kf-light);
-  }
-
-  /* Hide desktop nav layout */
-  .nav-menu {
-    gap: 0;
-  }
-}
-
-/* ------------------------------
-   HAMBURGER — DESKTOP
---------------------------------*/
-.hamburger {
-  display: none; /* hidden on desktop */
 }
