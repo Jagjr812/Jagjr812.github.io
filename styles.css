@@ -102,19 +102,7 @@ header {
 /* ------------------------------
    MOBILE MENU
 --------------------------------*/
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
 
-.hamburger span {
-  width: 26px;
-  height: 3px;
-  background: white;
-  margin: 4px 0;
-  transition: var(--transition-speed);
-}
 
 /* Mobile layout */
 @media (max-width: 720px) {
