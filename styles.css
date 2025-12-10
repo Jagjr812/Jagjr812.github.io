@@ -94,18 +94,17 @@ header {
   background: var(--hover-bg);
 }
 
-/* Show dropdown on hover */
+/* Show dropdown on hover (desktop only) */
 .dropdown:hover .dropdown-content {
   display: flex;
 }
 
 /* ------------------------------
-   MOBILE MENU
+   MOBILE MENU (FIXED + WORKING)
 --------------------------------*/
-
-
-/* Mobile layout */
 @media (max-width: 720px) {
+
+  /* Hide menu on mobile until hamburger is clicked */
   .nav-menu {
     position: absolute;
     top: 65px;
@@ -113,47 +112,24 @@ header {
     background: var(--kf-red);
     flex-direction: column;
     width: 200px;
-    display: none;
+    display: none;        /* hidden by default */
     padding: 10px 0;
+    z-index: 999;
   }
 
+  /* Show when active */
   .nav-menu.active {
     display: flex;
   }
 
+  /* Dropdown changes on mobile */
   .dropdown-content {
     position: static;
     box-shadow: none;
     background: var(--kf-light);
   }
 
-  .hamburger {
-    display: flex;
-  }
-  
-  /* MOBILE NAV FIX */
-@media (max-width: 600px) {
-
-  /* Hide the menu until hamburger is clicked */
-  .nav-menu {
-    display: none;
-    position: absolute;
-    top: 70px;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    width: 200px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    z-index: 1000;
-  }
-
-  /* Show menu when active */
-  .nav-menu.active {
-    display: flex;
-  }
-
-  /* Show hamburger on mobile */
+  /* Show hamburger menu */
   .hamburger {
     display: flex;
     flex-direction: column;
@@ -164,14 +140,11 @@ header {
   .hamburger span {
     width: 25px;
     height: 3px;
-    background: #000;
+    background: var(--kf-light);
   }
-
 }
 
 /* Hide hamburger on desktop */
 .hamburger {
   display: none;
-}
-  
 }
