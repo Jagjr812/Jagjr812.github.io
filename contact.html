@@ -11,10 +11,6 @@
 <header>
   <div class="logo">Kennedy Fried Chicken</div>
 
-  <button class="menu-toggle" aria-label="Toggle navigation">
-    ☰
-  </button>
-
   <nav class="navbar">
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
@@ -24,6 +20,12 @@
       <li><a href="contact.html">Contact</a></li>
       <li><a href="order.html">Order Online</a></li>
     </ul>
+
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
 </header>
 
@@ -45,10 +47,10 @@
 </main>
 
 <script>
-  const toggle = document.querySelector('.menu-toggle');
+  const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
 
-  toggle.addEventListener('click', () => {
+  hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
   });
 </script>
