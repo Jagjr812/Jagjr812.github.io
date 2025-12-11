@@ -10,6 +10,13 @@
 
 <header>
   <div class="logo">Kennedy Fried Chicken</div>
+
+  <!-- Hamburger Button for Mobile -->
+  <button class="menu-toggle" aria-label="Toggle navigation">
+    ☰
+  </button>
+
+  <!-- Navigation -->
   <nav class="navbar">
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
@@ -26,6 +33,16 @@
   <h1>Order Online</h1>
   <p>Online ordering coming soon.</p>
 </main>
+
+<!-- Mobile Menu Script -->
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+
+  toggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+</script>
 
 </body>
 </html>
