@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #ffffff url('../images/texture.png');
+  color: #0a1f44;
+  cursor: none;
+}
+
+header {
+  background-color: #0a1f44;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+.intro {
+  padding: 30px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.bio {
+  padding: 30px;
+  font-style: italic;
+}
+
+.bio h2 {
+  color: #0a1f44;
+}
+
+.bio img {
+  width: 220px;
+  margin-top: 15px;
+  border: 3px solid #0a1f44;
+}
+
+footer {
+  background-color: #0a1f44;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+footer nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer nav a:hover {
+  text-decoration: underline;
+}
+
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #0a1f44;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
